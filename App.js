@@ -2,6 +2,16 @@ const express = require ('express')
 const favicon = require ('serve-favicon')
 const bodyParser = require('body-parser')
 const sequelize = require ('./src/db/sequelize')
+const { URL, URLSearchParams } = require('url');
+
+// Encode une partie d'URL avec Punycode
+const encodedHostname = new URL('http://xn--fsq@example.com').hostname;
+console.log(encodedHostname);  // Affiche: xn--fsq@example.com
+
+// Décoder une partie d'URL avec Punycode
+const decodedHostname = new URL('http://xn--fsq@example.com').hostname;
+console.log(decodedHostname);  // Affiche: 你好@example.com
+
 
 const app = express()
 const port = process.env.PORT || 3000
